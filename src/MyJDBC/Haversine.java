@@ -1,4 +1,4 @@
-package Principal;
+package MyJDBC;
 
 import static java.lang.Math.toRadians;
 import static java.lang.Math.asin;

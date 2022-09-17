@@ -1,4 +1,4 @@
-package Principal;
+package MyJDBC;
 
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ public class Djikstra {
     //como os pesos que usaremos são double, usaremos como "infinito" o valor 100000000
     //que é muito maior que as distancias trabalhadas
     static final double inf = 100000000;
-    static final int num_Vertices = 6;  //numero de vertices do grafo (sao 40 aeroportos)
+    static final int num_Vertices = 40;  //numero de vertices do grafo (sao 40 aeroportos)
 
     // função que encontra o vertice com menor distancia
     int minDistance(double path_array[], Boolean visitados[])   {
@@ -24,7 +24,7 @@ public class Djikstra {
     }
 
     //funcao que determina os passos do caminho de menor peso para um certo destino
-    void caminho(int pais[], int dest_node){
+    int caminho(int pais[], int dest_node){
         int b = dest_node;
         List<Integer> nos = new ArrayList<>();
         while(b != pais[b]){
@@ -32,21 +32,13 @@ public class Djikstra {
             b = pais[b];
         }
         nos.add(b);
-        System.out.println(nos);
-        System.out.println("O caminho entre " + nos.get(nos.size()-1) + " e " + nos.get(0) + " passa por: ");
         for(int i=nos.size()-2; i>0; i--){
-            System.out.println(nos.get(i));
+            b = nos.get(i);
         }
+        return b;
     }
 
-    // print the array of distances (path_array)
-    void printMinpath(double path_array[])   {
-        System.out.println("Vertex# \t Minimum Distance from Source");
-        for (int i = 0; i < num_Vertices; i++)
-            System.out.println(i + " \t\t\t " + path_array[i]);
-    }
-
-    void algo_dijkstra(double graph[][], int src_node, int dest_node) {
+    int algo_dijkstra(double[][] graph, int src_node, int dest_node) {
         double path_array[] = new double[num_Vertices]; // array com os pesos de cada caminho, de src até o no de indice i
 
         Boolean visitados[] = new Boolean[num_Vertices]; // contem os nos que foram visitados (true se ja foi visitado)
@@ -75,9 +67,9 @@ public class Djikstra {
             }
         }
         // print the path array
-        printMinpath(path_array);
-        caminho(pais, dest_node);
+        int retorno = caminho(pais, dest_node);
         System.out.println("A distancia até o destino é: " + path_array[dest_node]);
+        return retorno;
     }
 
 }
@@ -85,3 +77,10 @@ public class Djikstra {
 
 //Fonte: https://www.softwaretestinghelp.com/dijkstras-algorithm-in-java/
 // recuperar caminho -> implementação propria
+
+// funcao util para imprimir todas as distancias
+//void printMinpath(double path_array[])   {
+//        System.out.println("Vertex# \t Minimum Distance from Source");
+//        for (int i = 0; i < num_Vertices; i++)
+//            System.out.println(i + " \t\t\t " + path_array[i]);
+//    }
