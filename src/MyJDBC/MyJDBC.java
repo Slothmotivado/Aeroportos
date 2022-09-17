@@ -9,13 +9,47 @@ import java.util.*;
 import static MyJDBC.Djikstra.num_Vertices;
 
 public class MyJDBC {
-
+    static void Consulta(String origem, String destino, String escala) {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sql_airport", "root", "qwezxcad");
+            Statement statement = connection.createStatement();
+            String accessDatabase = "INSERT INTO consultas" + " VALUES('"+ origem +"','"+destino+"','"+escala+"') ";
+            statement.executeUpdate(accessDatabase);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    static int Voltar(){
+        int volta = 0;
+        while(volta != 1 && volta != 2){
+            System.out.println("Voltar para o menu? [1-Sim, 2-Não]");
+            Scanner input = new Scanner(System.in);
+            volta = input.nextInt();
+            if(volta == 2)
+                System.out.println("Obrigado pela consulta!");
+        }
+        return volta - 1;
+    }
+    static String ExecutarAlgoritmo(double[][] matriz, int orig, int dest, HashMap<Integer, Aeroporto> mapaSiglas){
+        String escala = "";
+        Matriz m = new Matriz(matriz, orig, dest);
+        Djikstra g = new Djikstra();
+        List<Integer> caminho = g.algo_dijkstra(m.removerAresta(), orig, dest);
+        m.inserirAresta();
+        System.out.println("A escala no caminho é em: ");
+        for(int i=1; i< caminho.size() - 1; i++){
+            System.out.println(mapaSiglas.get(caminho.get(i)+1).sigla + " (" + mapaSiglas.get(caminho.get(i)+1).municipio + ")");
+            escala += mapaSiglas.get(caminho.get(i)+1).sigla += " ";
+        }
+        return escala;
+    }
     public static void main(String[] args) {
         String Origem= "Origem";
         String Destino = "Destino";
         int orig = 0;
         int dest = 0;
         String estado;
+        Scanner input = new Scanner(System.in).useDelimiter("\n");
 
         HashMap<Integer, Aeroporto> mapaSiglas = new HashMap<Integer, Aeroporto>();
 
@@ -42,13 +76,11 @@ public class MyJDBC {
                 double lat2 = mapaSiglas.get(j+1).latitude;
                 double long2 = mapaSiglas.get(j+1).longitude;
                 matriz[i][j] = new Haversine(lat1,long1,lat2,long2).distancia();
-                //System.out.println(mapaSiglas.get(i+1).sigla + "|" + mapaSiglas.get(j+1).sigla + "|" + matriz[i][j]);
             }
         }
         //menu
-        Scanner input = new Scanner(System.in).useDelimiter("\n");
-        int menu = 0;
 
+        int menu = 0;
         while(menu == 0){
             int opcao = 0;
             while(opcao == 0){
@@ -69,13 +101,11 @@ public class MyJDBC {
                     }
                     if(origemCheck == 0){
                         System.out.println("Estado invalido, comece novamente");
-                        opcao = 0;
                         break;
                     } else if (origemCheck == 1){
                         System.out.println("Escolha a origem, digitando o codigo de 3 letras do aeroporto: ");
                         Origem = input.next();
                     }
-
                     System.out.println("Escolha o estado do aeroporto de destino para consultar, escrevendo seu nome ou sigla: ");
                     estado = input.next();
                     for (int i=0; i< num_Vertices; i++){
@@ -86,7 +116,6 @@ public class MyJDBC {
                     }
                     if(destinoCheck == 0){
                         System.out.println("Estado invalido, comece novamente");
-                        opcao = 0;
                         break;
                     } else if (destinoCheck == 1){
                         System.out.println("Escolha o destino, digitando o codigo de 3 letras do aeroporto: ");
@@ -98,20 +127,9 @@ public class MyJDBC {
                         if (Destino.equals(mapaSiglas.get(i + 1).sigla))
                             dest = i;
                     }
-                    Matriz m = new Matriz(matriz, orig, dest);
-                    Djikstra g = new Djikstra();
-                    int caminho = g.algo_dijkstra(m.removerAresta(), orig, dest);
-                    m.inserirAresta();
-                    System.out.println("A escala no caminho é em " + mapaSiglas.get(caminho).sigla + " (" + mapaSiglas.get(caminho).municipio + ")");
-                    System.out.println("Realizar outra consulta? [s/n]");
-                    String consulta;
-                    consulta = input.next();
-                    if (consulta == "s"){
-                        opcao = 0;
-                    } else if(consulta == "n"){
-                        System.out.println("Obrigado pela consulta!");
-                        opcao = -1;
-                    }
+                    String escala = ExecutarAlgoritmo(matriz, orig, dest, mapaSiglas);
+                    Consulta(Origem, Destino, escala);
+                    menu = Voltar();
                 }
                 else if(opcao == 2){
                     System.out.println("Escolha a origem, digitando o codigo de 3 letras do aeroporto: ");
@@ -124,20 +142,9 @@ public class MyJDBC {
                         if(Destino.equals(mapaSiglas.get(i+1).sigla))
                             dest = i;
                     }
-                    Matriz m = new Matriz(matriz, orig, dest);
-                    Djikstra g = new Djikstra();
-                    int caminho = g.algo_dijkstra(m.removerAresta(), orig, dest);
-                    m.inserirAresta();
-                    System.out.println("A escala no caminho é em " + mapaSiglas.get(caminho+1).sigla + " (" + mapaSiglas.get(caminho+1).municipio + ")");
-                    System.out.println("Realizar outra consulta? [s/n]");
-                    String consulta;
-                    consulta = input.next();
-                    if (consulta == "s"){
-                        opcao = 0;
-                    } else if(consulta == "n"){
-                        System.out.println("Obrigado pela consulta!");
-                        opcao = -1;
-                    }
+                    String escala = ExecutarAlgoritmo(matriz, orig, dest, mapaSiglas);
+                    Consulta(Origem, Destino, escala);
+                    menu = Voltar();
                 }
                 else if(opcao == -1){
                     System.out.println("Obrigado pela consulta!");
@@ -149,32 +156,5 @@ public class MyJDBC {
                 }
             }
         }
-        Matriz m = new Matriz(matriz, 7, 2);
-        Djikstra g = new Djikstra();
-        int caminho = g.algo_dijkstra(m.removerAresta(), 7, 2);
-        m.inserirAresta();
-        System.out.println("A escala no caminho é em " + mapaSiglas.get(caminho).sigla + " (" + mapaSiglas.get(caminho).municipio + ")");
     }
 }
-
-/*
- // receber no input os aeroportos e fazer calcular a distancia/caminho
-        //Scanner input = new Scanner( System.in );
-        System.out.println("escolha a origem: ");
-        Origem = input.next();
-        System.out.println("escolha o destino: ");
-        Destino = input.next();
-        for (int i=0; i< num_Vertices; i++){
-            if (Origem.equals(mapaSiglas.get(i+1).sigla))
-                orig = i;
-            if(Destino.equals(mapaSiglas.get(i+1).sigla))
-                dest = i;
-        }
-
-
-            // rodando o algoritmo de Djikstra com funcoes matriz e djikstra
-                Matriz m = new Matriz(matriz, orig, dest);
-                Djikstra g = new Djikstra();
-                g.algo_dijkstra(m.removerAresta(), orig, dest);
-                m.inserirAresta();
- */
