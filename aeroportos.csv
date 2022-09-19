@@ -1,0 +1,41 @@
+id,sigla,nome,siglaEstado,estado,municipio,latitude,longitude
+001,CZS,Aeroporto Internacional de Cruzeiro do Sul,AC,Acre,Cruzeiro do Sul,-7.599444,-72.769444
+002,RBR,Aeroporto Internacional de Rio Branco - Placido de Castro,AC,Acre,Rio Branco,-9.868889,-67.895833
+003,MCZ,Aeroporto Internacional de Maceio - Zumbi dos Palmares,AL,Alagoas,Maceio,-9.517222,-35.783611
+004,MCP,Aeroporto Internacional de Macapa - Alberto Alcolumbre,AP,Amapa,Macapa,0.050833,-51.070278
+005,MAO,Aeroporto Internacional de Manaus - Eduardo Gomes,AM,Amazonas,Manaus,-3.038889,-60.046111
+006,TBT,Aeroporto Internacional de Tabatinga,AM,Amazonas,Tabatinga,-4.250556,-69.937778
+007,SSA,Aeroporto Internacional de Salvador - Deputado Luis Eduardo Magalhaes,BA,Bahia,Salvador,-12.908611,-38.3225
+008,FOR,Aeroporto Internacional de Fortaleza - Pinto Martins,CE,Ceara,Fortaleza,-3.775833,-38.532222
+009,BSB,Aeroporto Internacional de Brasilia - Presidente Juscelino Kubitschek,DF,Distrito Federal,Brasilia,-15.871111,-47.918611
+010,VIX,Aeroporto Internacional de Vitoria - Eurico de Aguiar Salles,ES,Espirito Santo,Vitoria,-20.256694,-40.286194
+011,GYN,Aeroporto Internacional de Goiania - Santa Genoveva,GO,Goias,Goiania,-16.629722,-49.226667
+012,SLZ,Aeroporto Internacional de Sao Luis - Marechal Hugo da Cunha Machado,MA,Maranhao,Sao Luis,-2.585278,-44.234167
+013,CGB,Aeroporto Internacional de Cuiaba - Marechal Rondon,MT,Mato Grosso,Cuiaba,-15.65,-56.1175
+014,CGR,Aeroporto Internacional de Campo Grande - Antonio Joao,MS,Mato Grosso do Sul,Campo Grande,-20.469444,-54.670278
+015,CMG,Aeroporto Internacional de Corumba,MS,Mato Grosso do Sul,Corumba,-19.511944,-57.504722
+016,PMG,Aeroporto Internacional de Ponta Pora,MS,Mato Grosso do Sul,Ponta Pora,-22.549722,-55.169722
+017,CNF,Aeroporto Internacional de Belo Horizonte - Confins,MG,Minas Gerais,Belo Horizonte,-19.624444,-43.971944
+018,BEL,Aeroporto Internacional de Belem - Juilo Cesar Ribeiro,PA,Para,Belem,-1.437778,-48.468889
+019,STM,Aeroporto Internacional de Santarem,PA,Para,Santarem,-2.4225,-54.792778
+020,JPA,Aeroporto Internacional de Joao Pessoa - Presidente Castro Pinto,PB,Paraiba,Joao Pessoa,-7.148333,-34.950556
+021,CWB,Aeroporto Internacional Afonso Pena,PR,Parana,Curitiba,-25.531667,-49.176111
+022,IGU,Aeroporto Internacional de Foz do Iguacu,PR,Parana,Foz do Iguacu,-25.600278,-54.485
+023,REC,Aeroporto Internacional de Guararapes Gilberto Freyre,PE,Pernambuco,Recife,-8.126389,-34.922778
+024,PHB,Aeroporto Internacional de Parnaiba - Prefeito Dr Joao Silva Filho,PI,Piaui,Parnaiba,-2.893056,-41.729722
+025,THE,Aeroporto Internacional de Teresina,PI,Piaui,Teresina,-5.060556,-42.824444
+026,GIG,Aeroporto Internacional do Rio de Janeiro - Galeao,RJ,Rio de Janeiro,Rio de Janeiro,-22.81,-43.250556
+027,CFB,Aeroporto Internacional de Cabo Frio,RJ,Rio de Janeiro,Cabo Frio,-22.920833,-42.071389
+028,NAT,Aeroporto Internacional de Natal - Governador Aluisio Alves,RN,Rio Grande do Norte,Natal,-5.77,-35.37
+029,BGX,Aeroporto Internacional Comandante Gustavo Kraemer,RS,Rio Grande do Sul,Bage,-31.390833,-54.109722
+030,PET,Aeroporto Internacional de Pelotas,RS,Rio Grande do Sul,Pelotas,-31.716111,-52.331111
+031,POA,Aeroporto Internacional de Porto Alegre - Salgado Filho,RS,Rio Grande do Sul,Porto Alegre,-29.993889,-51.171111
+032,URG,Aeroporto Internacional Rubem Berta,RS,Rio Grande do Sul,Uruguaiana,-29.781944,-57.038333
+033,PVH,Aeroporto Internacional de Porto Velho - Governador Jorge Teixeira,RO,Rondonia,Porto Velho,-8.713611,-63.902778
+034,BVB,Aeroporto Internacional de Boa Vista - Atlas Brasil,RR,Roraima,Boa Vista,2.841389,-60.692222
+035,FLN,Aeroporto Internacional de Florianopolis - Hercilio Luz,SC,Santa Catarina,Florianopolis,-27.670278,-48.5525
+036,NVT,Aeroporto Internacional Ministro Victor Konder,SC,Santa Catarina,Navegantes,-26.878611,-48.650833
+037,GRU,Aeroporto Internacional de Guarulhos,SP,Sao Paulo,Sao Paulo,-23.431944,-46.469444
+038,QSC,Aeroporto Internacional de Sao Carlos,SP,Sao Paulo,Sao Carlos,-21.876389,-47.903333
+039,VCP,Aeroporto Internacional de Campinas - Viracopos,SP,Sao Paulo,Campinas,-23.006944,-47.134444
+040,AJU,Aeroporto Internacional de Aracaju,SE,Sergipe,Aracaju,-10.985278,-37.073333
