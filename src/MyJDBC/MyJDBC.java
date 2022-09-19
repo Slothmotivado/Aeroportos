@@ -37,7 +37,7 @@ public class MyJDBC {
         List<Integer> caminho = g.algo_dijkstra(m.removerAresta(), orig, dest);
         m.inserirAresta();
         System.out.println("A escala no caminho é em: ");
-        for(int i=1; i< caminho.size() - 1; i++){
+        for(int i=caminho.size()-2; i>0; i--){
             System.out.println(mapaSiglas.get(caminho.get(i)+1).sigla + " (" + mapaSiglas.get(caminho.get(i)+1).municipio + ")");
             escala += mapaSiglas.get(caminho.get(i)+1).sigla += " ";
         }

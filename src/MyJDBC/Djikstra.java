@@ -31,9 +31,6 @@ public class Djikstra {
             b = pais[b];
         }
         nos.add(b);
-        for(int i=nos.size()-2; i>0; i--){
-            b = nos.get(i);
-        }
         return (ArrayList) nos;
     }
 
